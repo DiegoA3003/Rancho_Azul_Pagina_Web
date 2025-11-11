@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://cdn.userway.org/widget.js" data-account="lhW7CHBYVa"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rancho Azul - Reservas</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid nav-content">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li> 
+            <li class="nav-item"><a class="nav-link active" href="reservas.html">Reservas</a></li> 
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menú</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <section id="reservas-hero" class="hero-content-wrapper container-principal">
+        <div class="hero-section card-info">
+            <h1>Reserve su Mesa Exclusiva</h1>
+            <p>Una experiencia culinaria inolvidable comienza con la reserva perfecta. Le invitamos a asegurar su lugar en nuestro distinguido salón.</p>
+            <button id="open-modal-btn" class="cta-button btn-info">Reservar Ahora</button>
+        </div>
+    
+        <div class="image-carousel-wrapper">
+            <div class="carousel-container">
+                <img src="IMG/asu.jpg" alt="Plato gourmet en ambiente de lujo" class="carousel-image">
+                <img src="IMG/chactado.jpg" alt="Copa de vino y mesa elegantemente puesta" class="carousel-image">
+            </div>
+        </div>
+    </section>
+
+    <div class="container-principal">
+        <div class="card-info card-reservas">
+            <h2>Contacto Rápido</h2>
+            <p class="reservas-intro-text">
+                Si prefiere una asistencia personalizada o su grupo supera las 8 personas, contáctenos directamente.
+            </p>
+            
+            <div class="social-links-reservas">
+                <a href="https://wa.me/51937350530?text=Hola,%20quisiera%20hacer%20una%20reserva%20en%20Rancho%20Azul." target="_blank" class="social-icon whatsapp-icon">
+                    <img src="IMG/llamar.png" alt="WhatsApp/Teléfono" class="icon"> 
+                </a>
+                <a href="https://maps.google.com/?cid=16145937123755773283&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" class="social-icon map-icon">
+                    <img src="IMG/ubicacion.png" alt="Google Maps" class="icon"> 
+                </a>
+                <a href="mailto:ventas.ranchoazul@gmail.com" target="_blank" class="social-icon gmail-icon">
+                    <img src="IMG/gmail.png" alt="Gmail" class="icon"> 
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="reservation-modal" class="modal hidden">
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    
+    <div class="modal-content">
+        <span id="close-modal-btn" class="close-btn">×</span>
+        
+        <h2>Confirmación de Reserva</h2>
+        
+        <form id="reservation-form-modal" action="#" method="POST" class="reservation-form">
+            
+            <div class="availability-section">
+                <h3>Buscar Disponibilidad</h3>
+                
+                <div class="availability-row">
+                    
+                    <div class="form-group">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora" class="form-label">Hora:</label>
+                        <input type="time" id="hora" name="hora" class="form-control" required min="12:00" max="22:00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientes" class="form-label">Personas:</label>
+                        <input type="number" id="clientes" name="clientes" class="form-control" min="1" max="10" required>
+                    </div>
+                    
+                    <button type="button" id="check-availability-btn" class="btn btn-primary check-availability-button">
+                        Comprobar
+                    </button>
+                </div>
+            </div>
+
+            <div id="status-message" style="margin-top: 15px; padding: 10px; background-color: #e9ecef; border-radius: 4px; text-align: center;">
+                Presiona "Comprobar" para verificar mesas.
+            </div>
+            <div id="error-message" class="hidden"></div>
+            
+            <div id="personal-data-section" class="hidden"> 
+                
+                <div style="margin-top: 20px;">
+                    <h3>Datos Personales</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono" class="form-label">Teléfono / WhatsApp:</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-info submit-button">
+                    Confirmar Reserva
+                </button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Rancho Azul. Contactate con nosotros.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // =========================================
+    // DECLARACIÓN DE ELEMENTOS DEL DOM
+    // =========================================
+    const modal = document.getElementById('reservation-modal');
+    
+    if (modal) {
+        
+        const body = document.body;
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        
+        const checkAvailabilityButton = document.getElementById('check-availability-btn'); 
+        const statusMessage = document.getElementById('status-message');
+        const errorMessage = document.getElementById('error-message');
+        const personalDataSection = document.getElementById('personal-data-section'); 
+        const reservationForm = document.getElementById('reservation-form-modal');
+        const fechaInput = document.getElementById('fecha');
+        const horaInput = document.getElementById('hora');
+        const clientesInput = document.getElementById('clientes');
+
+        // Establecer la fecha mínima de forma elegante (hoy)
+        const today = new Date().toISOString().split('T')[0];
+        fechaInput.setAttribute('min', today);
+
+
+        // =========================================
+        // MANEJO DEL MODAL
+        // =========================================
+        function openModal() {
+            modal.classList.remove('hidden');
+            body.classList.add('modal-open'); 
+            
+            // Restablecer el estado inicial del formulario
+            if (statusMessage) {
+                statusMessage.textContent = 'Presiona "Comprobar" para verificar mesas.';
+                statusMessage.className = 'alert'; 
+                statusMessage.style.backgroundColor = '#e9ecef'; 
+                statusMessage.style.color = '#495057'; 
+                statusMessage.classList.remove('hidden'); 
+            }
+            
+            if (errorMessage) {
+                errorMessage.classList.add('hidden');
+            }
+            if (personalDataSection) {
+                personalDataSection.classList.add('hidden');
+            }
+            
+            if (reservationForm) {
+                reservationForm.reset();
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            body.classList.remove('modal-open');
+        }
+
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                openModal();
+            });
+        }
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        if (modalBackdrop) {
+            modalBackdrop.addEventListener('click', closeModal);
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // =========================================
+        // LÓGICA DE SIMULACIÓN DE DISPONIBILIDAD
+        // =========================================
+        if (checkAvailabilityButton) {
+            checkAvailabilityButton.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                
+                // Ocultar mensajes previos
+                statusMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                personalDataSection.classList.add('hidden'); 
+    
+                // Obtener valores de los inputs
+                const hora = horaInput.value;
+                const fechaValue = fechaInput.value;
+                const clientes = parseInt(clientesInput.value);
+    
+                // Validación de campos
+                if (!hora || !fechaValue || isNaN(clientes) || clientes < 1) {
+                    errorMessage.textContent = '⛔ Por favor, introduce la fecha, hora y un número de personas válido (mínimo 1).';
+                    errorMessage.style.backgroundColor = '#f8d7da';
+                    errorMessage.style.color = '#721c24';
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+    
+                // Crear objeto fecha
+                const fecha = new Date(fechaValue + 'T00:00:00'); 
+                const dayOfWeek = fecha.getUTCDay(); // 0 = Domingo, 6 = Sábado
+                const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                
+                // --- Lógica de Simulación Mejorada ---
+                let available = true;
+                let message = '';
+
+                if (clientes > 8) {
+                    available = false;
+                    message = '❌ Lo sentimos, para grupos de más de 8 personas, por favor contáctanos directamente.';
+                } else if (isWeekend && hora >= '20:30') {
+                    available = false;
+                    message = '❌ La hora de 20:30 o posterior en fin de semana está completamente reservada.';
+                } else if (clientes <= 2 && hora === '19:00') {
+                    // Simulación de una hora con alta demanda
+                    available = false;
+                    message = '❌ La mesa para 2 a las 19:00 está reservada. Prueba con 18:30 o 20:00.';
+                }
+                
+                if (!available) {
+                    errorMessage.textContent = message;
+                    errorMessage.style.backgroundColor = '#f8d7da';
+                    errorMessage.style.color = '#721c24';
+                    errorMessage.classList.remove('hidden');
+                } else {
+                    statusMessage.classList.remove('hidden');
+                    statusMessage.textContent = '✅ ¡Disponibilidad Confirmada! Completa tus datos para finalizar la reserva.';
+                    statusMessage.style.backgroundColor = '#d4edda'; 
+                    statusMessage.style.color = '#155724'; 
+                    
+                    personalDataSection.classList.remove('hidden'); 
+                }
+            });
+        }
+        
+        // =========================================
+        // LÓGICA DE SIMULACIÓN DE CONFIRMACIÓN DE RESERVA
+        // =========================================
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                statusMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                personalDataSection.classList.add('hidden');
+
+                // Simular el envío de datos al servidor
+                const nombre = document.getElementById('nombre').value;
+
+                // Mostrar mensaje de éxito en la página
+                const successMsgContainer = document.querySelector('.card-reservas');
+                if (successMsgContainer) {
+                    successMsgContainer.innerHTML = `
+                        <div style="padding: 40px; text-align: center;">
+                            <h2>🎉 ¡Reserva Exitosa!</h2>
+                            <p style="font-size: 1.2em; color: #155724;">
+                                Gracias, <strong>${nombre}</strong>. Su mesa ha sido reservada.
+                            </p>
+                            <p>Recibirá una confirmación detallada por correo electrónico pronto.</p>
+                            <button onclick="window.location.href='index.html'" class="btn-secondary-elegant cta-button" style="margin-top: 20px;">
+                                Volver al Inicio
+                            </button>
+                        </div>
+                    `;
+                }
+                
+                closeModal();
+                
+            });
+        }
+    } 
+});
+</script>
+
+</body>
+</html>
